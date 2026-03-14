@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=DM+Mono:wght@300&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --white: #f4f1ec;
+            --dim: rgba(244, 241, 236, 0.45);
+            --rule: rgba(244, 241, 236, 0.12);
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --mono: 'DM Mono', monospace;
+            --poppins: 'Poppins', sans-serif;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            cursor: none;
+        }
+
+        /* ── Layer stack ─────────────────────────────────────── */
+        /* Layer 1 – Three.js 3-D scene */
+        #three-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+        }
+
+        /* Layer 2 – WebGL Threads */
+        #threads-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+            /* threads drawn with alpha; multiply blends them into the 3-D scene */
+            mix-blend-mode: screen;
+        }
+
+        /* Layer 3 – radial vignette */
+        #vignette {
+            position: fixed;
+            inset: 0;
+            z-index: 3;
+            background: radial-gradient(ellipse at 50% 50%,
+                    transparent 30%,
+                    rgba(0, 0, 0, 0.72) 100%);
+            pointer-events: none;
+        }
+
+        /* Layer 4 – UI */
+        #ui {
+            position: fixed;
+            inset: 0;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            text-align: center;
+            padding: 24px;
+        }
+
+        /* ── Eyebrow ── */
+        .eyebrow {
+            font-family: var(--poppins);
+            font-size: 0.62rem;
+            letter-spacing: 0.38em;
+            text-transform: uppercase;
+            color: var(--dim);
+            margin-bottom: 26px;
+            opacity: 0;
+            animation: riseIn 1s 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* ── Headline ── */
+        .headline {
+            font-family: var(--poppins);
+            font-weight: 300;
+            font-size: clamp(2.8rem, 7vw, 7rem);
+            line-height: 1.02;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            max-width: 820px;
+        }
+
+        .headline .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .headline .line span {
+            display: block;
+            transform: translateY(110%);
+            animation: slideUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .headline .line:nth-child(1) span {
+            animation-delay: 0.85s;
+        }
+
+        .headline .line:nth-child(2) span {
+            animation-delay: 1.05s;
+        }
+
+        .headline .line:nth-child(3) span {
+            animation-delay: 1.22s;
+        }
+
+        .headline em {
+            font-style: italic;
+        }
+
+        /* ── Divider ── */
+        .divider {
+            width: 1px;
+            height: 0;
+            background: var(--rule);
+            margin: 40px auto;
+            animation: growLine 0.9s 1.7s ease forwards;
+        }
+
+        /* ── Sub ── */
+        .sub {
+            font-family: var(--poppins);
+            font-size: 0.68rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--dim);
+            margin-bottom: 44px;
+            opacity: 0;
+            animation: riseIn 0.9s 1.9s ease forwards;
+        }
+
+        /* ── CTA button ── */
+        .cta-wrap {
+            opacity: 0;
+            animation: riseIn 0.9s 2.1s ease forwards;
+        }
+
+        .btn-enter {
+            position: relative;
+            display: inline-block;
+            font-family: var(--poppins);
+            font-size: 0.68rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #000;
+            background: var(--white);
+            padding: 18px 52px;
+            text-decoration: none;
+            border: none;
+            cursor: none;
+            overflow: hidden;
+            transition: color 0.4s;
+        }
+
+        /* sliding fill on hover */
+        .btn-enter::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #000;
+            transform: translateX(-101%);
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .btn-enter:hover::before {
+            transform: translateX(0);
+        }
+
+        .btn-enter:hover {
+            color: var(--white);
+        }
+
+        .btn-enter span {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-enter .arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-enter:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* ── Corner labels ── */
+        .corner {
+            position: fixed;
+            font-family: var(--poppins);
+            font-size: 0.55rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--dim);
+            opacity: 0;
+            animation: riseIn 1s 2.4s ease forwards;
+            z-index: 4;
+        }
+
+        .corner.tl {
+            top: 32px;
+            left: 44px;
+        }
+
+        .corner.tr {
+            top: 32px;
+            right: 44px;
+        }
+
+        .corner.bl {
+            bottom: 32px;
+            left: 44px;
+        }
+
+        .corner.br {
+            bottom: 32px;
+            right: 44px;
+        }
+
+        /* ── Custom cursor ── */
+        #cursor {
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+        }
+
+        #cursor .dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--white);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s, height 0.25s, opacity 0.25s;
+            mix-blend-mode: difference;
+        }
+
+        #cursor .ring {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(244, 241, 236, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0.6);
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s;
+            opacity: 0;
+        }
+
+        #cursor.visible .ring {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #cursor.hover .dot {
+            width: 52px;
+            height: 52px;
+            opacity: 0.08;
+        }
+
+        #cursor.hover .ring {
+            transform: translate(-50%, -50%) scale(1.6);
+            opacity: 0.3;
+        }
+
+        /* ── Keyframes ── */
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(110%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes growLine {
+            from {
+                height: 0;
+                opacity: 0;
+            }
+
+            to {
+                height: 52px;
+                opacity: 1;
+            }
+        }
+
+        /* ── Page-exit overlay ── */
+        #exit-overlay {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 8888;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.7s ease;
+        }
+
+        #exit-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Exit overlay -->
+    <div id="exit-overlay"></div>
+
+    <!-- Layer 1: Three.js -->
+    <canvas id="three-canvas"></canvas>
+
+    <!-- Layer 2: WebGL Threads -->
+    <canvas id="threads-canvas"></canvas>
+
+    <!-- Layer 3: Vignette -->
+    <div id="vignette"></div>
+
+    <!-- Layer 4: UI -->
+    <div id="ui">
+        <p class="eyebrow">Creative Developer &amp; Designer</p>
+
+        <h1 class="headline">
+            <span class="line"><span>Welcome to</span></span>
+            <span class="line"><span>my <em>portfolio</em></span></span>
+            <span class="line"><span>website.</span></span>
+        </h1>
+
+        <div class="divider"></div>
+
+        <p class="sub">Design &nbsp;·&nbsp; Motion &nbsp;·&nbsp; Code</p>
+
+        <div class="cta-wrap">
+            <a class="btn-enter" id="enter-btn" href="main.html">
+                <span>Enter &nbsp;<span class="arrow">→</span></span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Corner labels -->
+    <div class="corner tl">AM — 2025</div>
+    <div class="corner tr">Portfolio</div>
+    <div class="corner bl" id="fps-label">— Hz</div>
+    <div class="corner br">Move cursor to explore</div>
+
+    <!-- Custom cursor -->
+    <div id="cursor">
+        <div class="ring"></div>
+        <div class="dot"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+     Three.js  (r128 from CDN)
+════════════════════════════════════════════════════════ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        (() => {
+            const canvas = document.getElementById('three-canvas');
+            const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+            renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+            renderer.setSize(innerWidth, innerHeight);
+            renderer.setClearColor(0x000000, 1);
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 200);
+            camera.position.set(0, 0, 28);
+
+            /* ── Fog ── */
+            scene.fog = new THREE.FogExp2(0x000000, 0.025);
+
+            /* ── Floating torus knots ── */
+            const knots = [];
+            const torusMat = new THREE.MeshStandardMaterial({
+                color: 0xffffff,
+                metalness: 0.85,
+                roughness: 0.15,
+                wireframe: false,
+            });
+
+            const torusConfig = [
+                { r: 3.5, t: 0.9, p: 2, q: 3, pos: [0, 0, -4], speed: 0.18 },
+                { r: 1.6, t: 0.4, p: 3, q: 5, pos: [-8, 4, -10], speed: 0.27 },
+                { r: 2.1, t: 0.5, p: 5, q: 3, pos: [9, -3, -12], speed: 0.22 },
+                { r: 1.0, t: 0.3, p: 4, q: 3, pos: [4, 7, -16], speed: 0.35 },
+                { r: 0.8, t: 0.2, p: 3, q: 7, pos: [-6, -6, -14], speed: 0.31 },
+            ];
+
+            torusConfig.forEach(cfg => {
+                const geo = new THREE.TorusKnotGeometry(cfg.r, cfg.t, 200, 24, cfg.p, cfg.q);
+                const mesh = new THREE.Mesh(geo, torusMat.clone());
+                mesh.position.set(...cfg.pos);
+                mesh.userData.speed = cfg.speed;
+                mesh.userData.offset = Math.random() * Math.PI * 2;
+                scene.add(mesh);
+                knots.push(mesh);
+            });
+
+            /* ── Particle field ── */
+            const N = 1800;
+            const positions = new Float32Array(N * 3);
+            for (let i = 0; i < N; i++) {
+                positions[i * 3] = (Math.random() - 0.5) * 80;
+                positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
+                positions[i * 3 + 2] = (Math.random() - 0.5) * 60 - 10;
+            }
+            const pgeo = new THREE.BufferGeometry();
+            pgeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const pmat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.06, sizeAttenuation: true, transparent: true, opacity: 0.5 });
+            scene.add(new THREE.Points(pgeo, pmat));
+
+            /* ── Lights ── */
+            scene.add(new THREE.AmbientLight(0xffffff, 0.15));
+            const key = new THREE.DirectionalLight(0xffffff, 1.2);
+            key.position.set(5, 8, 10);
+            scene.add(key);
+            const fill = new THREE.PointLight(0x8888ff, 1.5, 60);
+            fill.position.set(-10, -4, 5);
+            scene.add(fill);
+            const rim = new THREE.PointLight(0xffffff, 0.8, 50);
+            rim.position.set(0, -8, 15);
+            scene.add(rim);
+
+            /* ── Mouse parallax ── */
+            let mx = 0, my = 0, tmx = 0, tmy = 0;
+            window.addEventListener('mousemove', e => {
+                tmx = (e.clientX / innerWidth - 0.5) * 2;
+                tmy = (e.clientY / innerHeight - 0.5) * 2;
+            });
+
+            /* ── Resize ── */
+            window.addEventListener('resize', () => {
+                camera.aspect = innerWidth / innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(innerWidth, innerHeight);
+            });
+
+            /* ── FPS counter ── */
+            const fpsEl = document.getElementById('fps-label');
+            let fpsFrames = 0, fpsLast = performance.now(), fpsVal = 0;
+
+            /* ── Render loop ── */
+            let lastT = 0;
+            function frame(t) {
+                requestAnimationFrame(frame);
+                const dt = Math.min((t - lastT) / 1000, 0.05);
+                lastT = t;
+                const ts = t * 0.001;
+
+                /* smooth parallax */
+                mx += 0.04 * (tmx - mx);
+                my += 0.04 * (tmy - my);
+                camera.position.x = mx * 2.5;
+                camera.position.y = -my * 1.5;
+                camera.lookAt(0, 0, 0);
+
+                /* rotate knots */
+                knots.forEach((k, i) => {
+                    k.rotation.x = ts * k.userData.speed + k.userData.offset;
+                    k.rotation.y = ts * k.userData.speed * 0.7;
+                    k.position.y += Math.sin(ts * 0.4 + i) * 0.003;
+                });
+
+                renderer.render(scene, camera);
+
+                /* FPS */
+                fpsFrames++;
+                if (t - fpsLast > 1000) {
+                    fpsVal = Math.round(fpsFrames * 1000 / (t - fpsLast));
+                    fpsEl.textContent = `${fpsVal} Hz`;
+                    fpsFrames = 0; fpsLast = t;
+                }
+            }
+            requestAnimationFrame(frame);
+        })();
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════
+     WebGL Threads
+════════════════════════════════════════════════════════ -->
+    <script>
+        (() => {
+            const VERT = `
+    attribute vec2 a_position;
+    void main() { gl_Position = vec4(a_position, 0.0, 1.0); }
+  `;
+            const FRAG = `
+    precision highp float;
+    uniform float iTime;
+    uniform vec3  iResolution;
+    uniform vec3  uColor;
+    uniform float uAmplitude;
+    uniform float uDistance;
+    uniform vec2  uMouse;
+
+    #define PI 3.1415926538
+    const int   u_line_count = 40;
+    const float u_line_width = 7.0;
+    const float u_line_blur  = 10.0;
+
+    float Perlin2D(vec2 P) {
+      vec2 Pi = floor(P);
+      vec4 Pf_Pfmin1 = P.xyxy - vec4(Pi, Pi + 1.0);
+      vec4 Pt = vec4(Pi.xy, Pi.xy + 1.0);
+      Pt = Pt - floor(Pt * (1.0 / 71.0)) * 71.0;
+      Pt += vec2(26.0, 161.0).xyxy;
+      Pt *= Pt;
+      Pt = Pt.xzxz * Pt.yyww;
+      vec4 hash_x = fract(Pt * (1.0 / 951.135664));
+      vec4 hash_y = fract(Pt * (1.0 / 642.949883));
+      vec4 grad_x = hash_x - 0.49999;
+      vec4 grad_y = hash_y - 0.49999;
+      vec4 grad_results = inversesqrt(grad_x * grad_x + grad_y * grad_y)
+          * (grad_x * Pf_Pfmin1.xzxz + grad_y * Pf_Pfmin1.yyww);
+      grad_results *= 1.4142135623730950;
+      vec2 blend = Pf_Pfmin1.xy * Pf_Pfmin1.xy * Pf_Pfmin1.xy
+                 * (Pf_Pfmin1.xy * (Pf_Pfmin1.xy * 6.0 - 15.0) + 10.0);
+      vec4 blend2 = vec4(blend, vec2(1.0 - blend));
+      return dot(grad_results, blend2.zxzx * blend2.wwyy);
+    }
+
+    float pixel(float count, vec2 res) {
+      return (1.0 / max(res.x, res.y)) * count;
+    }
+
+    float lineFn(vec2 st, float width, float perc, float offset,
+                 vec2 mouse, float time, float amplitude, float distance) {
+      float split_point  = 0.1 + perc * 0.4;
+      float finalAmplitude = smoothstep(split_point, 0.7, st.x) * 0.5 * amplitude
+                             * (1.0 + (mouse.y - 0.5) * 0.2);
+      float time_scaled = time / 10.0 + (mouse.x - 0.5);
+      float blur        = smoothstep(split_point, split_point + 0.05, st.x) * perc;
+      float xnoise = mix(
+        Perlin2D(vec2(time_scaled, st.x + perc)        * 2.5),
+        Perlin2D(vec2(time_scaled, st.x + time_scaled) * 3.5) / 1.5,
+        st.x * 0.3
+      );
+      float y = 0.5 + (perc - 0.5) * distance + xnoise / 2.0 * finalAmplitude;
+      float ls = smoothstep(
+        y + (width/2.0) + (u_line_blur * pixel(1.0, iResolution.xy) * blur), y, st.y);
+      float le = smoothstep(
+        y, y - (width/2.0) - (u_line_blur * pixel(1.0, iResolution.xy) * blur), st.y);
+      return clamp((ls - le) * (1.0 - smoothstep(0.0, 1.0, pow(perc, 0.3))), 0.0, 1.0);
+    }
+
+    void main() {
+      vec2 uv = gl_FragCoord.xy / iResolution.xy;
+      float ls = 1.0;
+      for (int i = 0; i < u_line_count; i++) {
+        float p = float(i) / float(u_line_count);
+        ls *= (1.0 - lineFn(uv,
+          u_line_width * pixel(1.0, iResolution.xy) * (1.0 - p),
+          p, PI * p, uMouse, iTime, uAmplitude, uDistance));
+      }
+      float c = 1.0 - ls;
+      gl_FragColor = vec4(uColor * c, c);
+    }
+  `;
+
+            const canvas = document.getElementById('threads-canvas');
+            const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: false });
+            if (!gl) return;
+
+            gl.clearColor(0, 0, 0, 0);
+            gl.enable(gl.BLEND);
+            gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+            function mkS(type, src) {
+                const s = gl.createShader(type);
+                gl.shaderSource(s, src); gl.compileShader(s); return s;
+            }
+            const prog = gl.createProgram();
+            gl.attachShader(prog, mkS(gl.VERTEX_SHADER, VERT));
+            gl.attachShader(prog, mkS(gl.FRAGMENT_SHADER, FRAG));
+            gl.linkProgram(prog); gl.useProgram(prog);
+
+            const buf = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+            const aPos = gl.getAttribLocation(prog, 'a_position');
+            gl.enableVertexAttribArray(aPos);
+            gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+            const uTime = gl.getUniformLocation(prog, 'iTime');
+            const uRes = gl.getUniformLocation(prog, 'iResolution');
+            const uCol = gl.getUniformLocation(prog, 'uColor');
+            const uAmp = gl.getUniformLocation(prog, 'uAmplitude');
+            const uDist = gl.getUniformLocation(prog, 'uDistance');
+            const uMou = gl.getUniformLocation(prog, 'uMouse');
+
+            function resize() {
+                canvas.width = innerWidth * devicePixelRatio;
+                canvas.height = innerHeight * devicePixelRatio;
+                canvas.style.width = innerWidth + 'px';
+                canvas.style.height = innerHeight + 'px';
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            let cur = [0.5, 0.5], tgt = [0.5, 0.5];
+            window.addEventListener('mousemove', e => {
+                tgt = [e.clientX / innerWidth, 1 - e.clientY / innerHeight];
+            });
+
+            function frame(t) {
+                requestAnimationFrame(frame);
+                const k = 0.05;
+                cur[0] += k * (tgt[0] - cur[0]);
+                cur[1] += k * (tgt[1] - cur[1]);
+
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                gl.uniform1f(uTime, t * 0.001);
+                gl.uniform3f(uRes, canvas.width, canvas.height, canvas.width / canvas.height);
+                gl.uniform3f(uCol, 1, 1, 1);
+                gl.uniform1f(uAmp, 2.5);
+                gl.uniform1f(uDist, 0.0);
+                gl.uniform2f(uMou, cur[0], cur[1]);
+                gl.drawArrays(gl.TRIANGLES, 0, 3);
+            }
+            requestAnimationFrame(frame);
+        })();
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════
+     Cursor + Enter button
+════════════════════════════════════════════════════════ -->
+    <script>
+        (() => {
+            /* Cursor */
+            const cur = document.getElementById('cursor');
+            let cx = -200, cy = -200;
+            let dcx = -200, dcy = -200;
+
+            window.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
+
+            function moveCursor() {
+                requestAnimationFrame(moveCursor);
+                dcx += 0.18 * (cx - dcx);
+                dcy += 0.18 * (cy - dcy);
+                cur.style.left = dcx + 'px';
+                cur.style.top = dcy + 'px';
+            }
+            moveCursor();
+
+            setTimeout(() => cur.classList.add('visible'), 600);
+
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', () => cur.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cur.classList.remove('hover'));
+            });
+
+            /* Enter button – fade to black then navigate */
+            document.getElementById('enter-btn').addEventListener('click', e => {
+                e.preventDefault();
+                const ov = document.getElementById('exit-overlay');
+                ov.classList.add('active');
+                setTimeout(() => { window.location.href = 'main.html'; }, 720);
+            });
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Section — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,600&display=swap"
+    rel="stylesheet" />
+  <!-- Costum CSS -->
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+  <!-- ══ CUSTOM CURSOR ══ -->
+  <div class="cur-ring" id="curRing" aria-hidden="true"></div>
+  <div class="cur-dot" id="curDot" aria-hidden="true"></div>
+  <div class="cur-label" id="curLabel" aria-hidden="true"></div>
+
+  <!-- ══ PAGE TRANSITION ══ -->
+  <div class="pt-overlay" id="ptOverlay">
+    <div class="pt-panel"></div>
+    <div class="pt-panel"></div>
+    <div class="pt-panel"></div>
+  </div>
+
+  <div class="pt-logo-wrap" id="ptLogoWrap">
+    <div class="pt-logo">Abdal<span class="pt-logo-dot">.</span></div>
+  </div>
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo">Abdal<span class="nav-logo-dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-social">
+      <a href="#" class="nav-social-link" title="GitHub">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+        </svg>
+      </a>
+      <a href="#" class="nav-social-link" title="LinkedIn">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z" />
+        </svg>
+      </a>
+      <a href="#" class="nav-social-link" title="Dribbble">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm7.97 5.54a10.17 10.17 0 0 1 2.3 6.35c-.33-.07-3.67-.75-7.03-.32-.07-.17-.14-.35-.22-.52-.2-.48-.43-.96-.66-1.43 3.72-1.52 5.41-3.7 5.61-4.08zM12 1.84c2.56 0 4.9.94 6.69 2.49-.17.35-1.7 2.38-5.28 3.73C11.77 5.19 10.1 3.1 9.83 2.76A10.2 10.2 0 0 1 12 1.84zM7.75 3.46c.26.32 1.97 2.42 3.6 5.32C6.9 9.94 3.2 9.92 2.82 9.91a10.23 10.23 0 0 1 4.93-6.45zM1.84 12.01v-.26c.37.01 4.7.06 9.47-1.31.26.51.51 1.03.74 1.55l-.37.1c-4.93 1.6-7.54 5.97-7.76 6.34A10.17 10.17 0 0 1 1.84 12zm10.16 10.16c-2.36 0-4.53-.81-6.24-2.15.18-.36 2.2-4.27 7.62-6.19l.06-.02c1.37 3.54 1.93 6.51 2.07 7.34a10.2 10.2 0 0 1-3.51.62zm5.31-1.49c-.1-.58-.62-3.4-1.88-6.88 3.16-.5 5.93.32 6.27.42a10.22 10.22 0 0 1-4.39 6.46z" />
+        </svg>
+      </a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ══ MOBILE MENU ══ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="#hero" class="mobile-nav-link active"><span class="mobile-nav-left"><span
+            class="mobile-nav-num">01</span>Home</span><span class="m-arrow">→</span></a>
+      <a href="#about" class="mobile-nav-link"><span class="mobile-nav-left"><span
+            class="mobile-nav-num">02</span>About</span><span class="m-arrow">→</span></a>
+      <a href="#services" class="mobile-nav-link"><span class="mobile-nav-left"><span
+            class="mobile-nav-num">03</span>Services</span><span class="m-arrow">→</span></a>
+      <a href="#projects" class="mobile-nav-link"><span class="mobile-nav-left"><span
+            class="mobile-nav-num">04</span>Projects</span><span class="m-arrow">→</span></a>
+      <a href="#contact" class="mobile-nav-link"><span class="mobile-nav-left"><span
+            class="mobile-nav-num">05</span>Contact</span><span class="m-arrow">→</span></a>
+      <div class="mobile-menu-footer">
+        <span class="mobile-menu-footer-label">Follow me</span>
+        <div class="mobile-social">
+          <a href="#" class="mobile-social-link"><svg viewBox="0 0 24 24">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+            </svg></a>
+          <a href="#" class="mobile-social-link"><svg viewBox="0 0 24 24">
+              <path
+                d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z" />
+            </svg></a>
+          <a href="#" class="mobile-social-link"><svg viewBox="0 0 24 24">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm7.97 5.54a10.17 10.17 0 0 1 2.3 6.35c-.33-.07-3.67-.75-7.03-.32-.07-.17-.14-.35-.22-.52-.2-.48-.43-.96-.66-1.43 3.72-1.52 5.41-3.7 5.61-4.08zM12 1.84c2.56 0 4.9.94 6.69 2.49-.17.35-1.7 2.38-5.28 3.73C11.77 5.19 10.1 3.1 9.83 2.76A10.2 10.2 0 0 1 12 1.84zM7.75 3.46c.26.32 1.97 2.42 3.6 5.32C6.9 9.94 3.2 9.92 2.82 9.91a10.23 10.23 0 0 1 4.93-6.45zM1.84 12.01v-.26c.37.01 4.7.06 9.47-1.31.26.51.51 1.03.74 1.55l-.37.1c-4.93 1.6-7.54 5.97-7.76 6.34A10.17 10.17 0 0 1 1.84 12zm10.16 10.16c-2.36 0-4.53-.81-6.24-2.15.18-.36 2.2-4.27 7.62-6.19l.06-.02c1.37 3.54 1.93 6.51 2.07 7.34a10.2 10.2 0 0 1-3.51.62zm5.31-1.49c-.1-.58-.62-3.4-1.88-6.88 3.16-.5 5.93.32 6.27.42a10.22 10.22 0 0 1-4.39 6.46z" />
+            </svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HERO SECTION ══ -->
+  <section id="hero">
+    <div class="hero-noise"></div>
+
+    <!-- Topbar -->
+    <div class="hero-topbar">
+      <div class="hero-logo">A.R.</div>
+      <div class="hero-coord">5.5477° N, 95.3239° E</div>
+      <div class="hero-status">
+        <div class="hero-dot"></div>
+        <span>Available for work</span>
+      </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="hero-main">
+
+      <!-- Left Column -->
+      <div class="hero-left">
+        <div class="hero-left-top">
+          <div class="hero-tag">Portfolio — 2025</div>
+          <h1 class="hero-heading">
+            Crafting<br>
+            <em>digital</em><br>
+            experiences.
+          </h1>
+          <p class="hero-desc">
+            UI/UX Designer & Frontend Developer based in Aceh, Indonesia.
+            I design interfaces that are both functional and visually refined —
+            where every pixel serves a purpose.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary">View Work</button>
+            <button class="btn-secondary">About me <span class="btn-arrow">→</span></button>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats-row">
+          <div class="hero-stat">
+            <div class="hero-stat-num">48<span>+</span></div>
+            <div class="hero-stat-label">Projects<br>Completed</div>
+            <div class="hero-stat-sub">since 2020</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">5<span>yr</span></div>
+            <div class="hero-stat-label">Years of<br>Experience</div>
+            <div class="hero-stat-sub">UI / Frontend</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">24<span>+</span></div>
+            <div class="hero-stat-label">Happy<br>Clients</div>
+            <div class="hero-stat-sub">worldwide</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="hero-right">
+        <div class="hero-image-wrap">
+          <div class="hero-img-placeholder">
+            <!-- Ganti dengan foto Anda: <img src="foto.jpg" alt="Nama Anda"> -->
+            <div class="hero-circle-bg"></div>
+            <span class="hero-avatar-label">AR</span>
+            <div class="corner-mark tl"></div>
+            <div class="corner-mark tr"></div>
+            <div class="corner-mark bl"></div>
+            <div class="corner-mark br"></div>
+          </div>
+          <div class="hero-image-caption">
+            <div class="hero-badge">UI / UX</div>
+            <div class="hero-badge">Frontend Dev</div>
+          </div>
+        </div>
+
+        <!-- Skill Bars -->
+        <div class="hero-right-bottom">
+          <div class="hero-skill-item">
+            <div class="hero-skill-header">
+              <span class="hero-skill-name">UI Design</span>
+              <span class="hero-skill-pct">92%</span>
+            </div>
+            <div class="hero-skill-bar">
+              <div class="hero-skill-fill" data-w="92"></div>
+            </div>
+          </div>
+          <div class="hero-skill-item">
+            <div class="hero-skill-header">
+              <span class="hero-skill-name">Frontend</span>
+              <span class="hero-skill-pct">85%</span>
+            </div>
+            <div class="hero-skill-bar">
+              <div class="hero-skill-fill" data-w="85"></div>
+            </div>
+          </div>
+          <div class="hero-skill-item">
+            <div class="hero-skill-header">
+              <span class="hero-skill-name">Branding</span>
+              <span class="hero-skill-pct">76%</span>
+            </div>
+            <div class="hero-skill-bar">
+              <div class="hero-skill-fill" data-w="76"></div>
+            </div>
+          </div>
+          <div class="hero-skill-item">
+            <div class="hero-skill-header">
+              <span class="hero-skill-name">Motion</span>
+              <span class="hero-skill-pct">68%</span>
+            </div>
+            <div class="hero-skill-bar">
+              <div class="hero-skill-fill" data-w="68"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll Hint -->
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll to explore
+    </div>
+  </section>
+
+
+  <!-- ══ ABOUT SECTION ══ -->
+  <section id="about" class="about-root">
+    <div class="about-inner">
+
+      <div class="section-label">
+        <span class="section-label-num">02</span>
+        About Me
+      </div>
+
+      <div class="about-grid">
+
+        <!-- LEFT -->
+        <div class="about-left">
+          <h2 class="about-heading">
+            Designer who<br>
+            <em>thinks in</em><br>
+            systems.
+          </h2>
+
+          <div class="about-photo-card">
+            <div class="about-photo-inner">
+              <div class="about-photo-bg"></div>
+              <span class="about-photo-initials">AR</span>
+              <div class="c-mark tl"></div>
+              <div class="c-mark tr"></div>
+              <div class="c-mark bl"></div>
+              <div class="c-mark br"></div>
+            </div>
+            <div class="about-photo-overlay">
+              <div>
+                <div class="about-photo-name">Abdal Rabbani</div>
+                <div class="about-photo-role">UI/UX · Frontend Developer</div>
+              </div>
+              <div class="about-photo-year">2025</div>
+            </div>
+          </div>
+
+          <div class="about-exp-row">
+            <div class="about-exp-item">
+              <div class="about-exp-num">5<sup>yr</sup></div>
+              <div class="about-exp-label">Experience</div>
+            </div>
+            <div class="about-exp-item">
+              <div class="about-exp-num">48<sup>+</sup></div>
+              <div class="about-exp-label">Projects</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="about-right">
+
+          <p class="about-bio">
+            Saya adalah <strong>UI/UX Designer &amp; Frontend Developer</strong> berbasis di Aceh, Indonesia.
+            Saya percaya bahwa desain yang baik bukan hanya soal estetika &mdash; melainkan
+            tentang <strong>memecahkan masalah nyata</strong> melalui antarmuka yang intuitif,
+            efisien, dan menyenangkan untuk digunakan.<br><br>
+            Dengan pengalaman lebih dari 5 tahun, saya telah membantu berbagai
+            klien dari <strong>startup hingga korporat</strong> mewujudkan produk digital
+            yang tidak hanya indah secara visual, tetapi juga berdampak nyata bagi pengguna.
+          </p>
+
+          <div class="about-info-grid">
+            <div class="about-info-item">
+              <span class="about-info-label">Name</span>
+              <span class="about-info-value">Abdal Rabbani</span>
+            </div>
+            <div class="about-info-item">
+              <span class="about-info-label">Based in</span>
+              <span class="about-info-value">Aceh, Indonesia</span>
+            </div>
+            <div class="about-info-item">
+              <span class="about-info-label">Email</span>
+              <span class="about-info-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                  data-cfemail="f3929197929fb3969e929a9fdd909c9e">[email&#160;protected]</a></span>
+            </div>
+            <div class="about-info-item">
+              <span class="about-info-label">Status</span>
+              <span class="about-info-value" style="color:#4ade80;">Available</span>
+            </div>
+            <div class="about-info-item">
+              <span class="about-info-label">Education</span>
+              <span class="about-info-value">Universitas Syiah Kuala</span>
+            </div>
+            <div class="about-info-item">
+              <span class="about-info-label">Languages</span>
+              <span class="about-info-value">Indonesian &middot; English</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="about-skills-title">Core Skills</div>
+            <div class="about-skills-wrap">
+              <div class="about-skill-row">
+                <div class="about-skill-meta">
+                  <span class="about-skill-name">UI / UX Design</span>
+                  <span class="about-skill-pct">92%</span>
+                </div>
+                <div class="about-skill-track">
+                  <div class="about-skill-fill" data-w="92"></div>
+                </div>
+              </div>
+              <div class="about-skill-row">
+                <div class="about-skill-meta">
+                  <span class="about-skill-name">Frontend Development</span>
+                  <span class="about-skill-pct">85%</span>
+                </div>
+                <div class="about-skill-track">
+                  <div class="about-skill-fill" data-w="85"></div>
+                </div>
+              </div>
+              <div class="about-skill-row">
+                <div class="about-skill-meta">
+                  <span class="about-skill-name">Branding &amp; Visual Identity</span>
+                  <span class="about-skill-pct">78%</span>
+                </div>
+                <div class="about-skill-track">
+                  <div class="about-skill-fill" data-w="78"></div>
+                </div>
+              </div>
+              <div class="about-skill-row">
+                <div class="about-skill-meta">
+                  <span class="about-skill-name">Motion &amp; Interaction Design</span>
+                  <span class="about-skill-pct">70%</span>
+                </div>
+                <div class="about-skill-track">
+                  <div class="about-skill-fill" data-w="70"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="about-tools-title">Tools &amp; Technologies</div>
+            <div class="about-tools-wrap">
+              <span class="about-tool-tag">Figma</span>
+              <span class="about-tool-tag">HTML</span>
+              <span class="about-tool-tag">CSS</span>
+              <span class="about-tool-tag">JavaScript</span>
+              <span class="about-tool-tag">React</span>
+              <span class="about-tool-tag">Tailwind CSS</span>
+              <span class="about-tool-tag">Framer</span>
+              <span class="about-tool-tag">Adobe XD</span>
+              <span class="about-tool-tag">Illustrator</span>
+              <span class="about-tool-tag">After Effects</span>
+            </div>
+          </div>
+
+          <div class="about-cta-row">
+            <button class="btn-white" id="openCvModal">Download CV</button>
+            <button class="btn-outline">Let's Talk &rarr;</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ SERVICE SECTION ══ -->
+  <section id="services" class="svc-root">
+    <div class="svc-inner">
+
+      <div class="svc-top">
+        <div class="svc-top-left">
+          <div class="section-label">
+            <span class="section-label-num">03</span>
+            Services
+          </div>
+          <h2 class="svc-heading">
+            What I<br><em>bring to the</em><br>table.
+          </h2>
+        </div>
+        <p class="svc-top-desc">
+          Saya menawarkan layanan end-to-end mulai dari riset pengguna
+          hingga produk digital yang siap diluncurkan.
+        </p>
+      </div>
+
+      <div class="svc-divider"></div>
+
+      <div class="svc-grid">
+
+        <!-- 01 -->
+        <div class="svc-card">
+          <div class="svc-card-num">01<div class="svc-card-num-line"></div>
+          </div>
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="14" rx="1" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+          </div>
+          <div class="svc-card-title">UI / UX Design</div>
+          <p class="svc-card-desc">
+            Merancang antarmuka yang intuitif dan berpusat pada pengguna.
+            Dari wireframe, prototipe interaktif, hingga design system yang
+            siap diimplementasikan developer.
+          </p>
+          <div class="svc-tags">
+            <span class="svc-tag">Figma</span>
+            <span class="svc-tag">Wireframing</span>
+            <span class="svc-tag">Prototyping</span>
+            <span class="svc-tag">Design System</span>
+            <span class="svc-tag">User Research</span>
+          </div>
+          <button class="svc-card-link">Learn more <span class="svc-link-arrow">&#8594;</span></button>
+        </div>
+
+        <!-- 02 -->
+        <div class="svc-card">
+          <div class="svc-card-num">02<div class="svc-card-num-line"></div>
+          </div>
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <div class="svc-card-title">Frontend Development</div>
+          <p class="svc-card-desc">
+            Mengubah desain menjadi kode yang bersih, cepat, dan responsif.
+            Membangun website dan web app dengan performa tinggi dan
+            aksesibilitas yang baik.
+          </p>
+          <div class="svc-tags">
+            <span class="svc-tag">HTML/CSS</span>
+            <span class="svc-tag">JavaScript</span>
+            <span class="svc-tag">React</span>
+            <span class="svc-tag">Tailwind</span>
+            <span class="svc-tag">Responsive</span>
+          </div>
+          <button class="svc-card-link">Learn more <span class="svc-link-arrow">&#8594;</span></button>
+        </div>
+
+        <!-- 03 -->
+        <div class="svc-card">
+          <div class="svc-card-num">03<div class="svc-card-num-line"></div>
+          </div>
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
+            </svg>
+          </div>
+          <div class="svc-card-title">Branding &amp; Identity</div>
+          <p class="svc-card-desc">
+            Membangun identitas visual yang kuat dan konsisten untuk brand kamu.
+            Dari logo, color palette, tipografi, hingga brand guideline
+            yang komprehensif.
+          </p>
+          <div class="svc-tags">
+            <span class="svc-tag">Logo Design</span>
+            <span class="svc-tag">Brand Guide</span>
+            <span class="svc-tag">Typography</span>
+            <span class="svc-tag">Illustrator</span>
+            <span class="svc-tag">Mockup</span>
+          </div>
+          <button class="svc-card-link">Learn more <span class="svc-link-arrow">&#8594;</span></button>
+        </div>
+
+      </div>
+
+      <div class="svc-bottom">
+        <p class="svc-bottom-text">
+          Punya project di luar kategori ini? <strong>Hubungi saya</strong> &mdash; saya selalu terbuka untuk diskusi.
+        </p>
+        <button class="svc-bottom-btn">Discuss a project &#8594;</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ PROJECT SECTION ══ -->
+  <section id="projects" class="prj-root">
+    <div class="prj-inner">
+
+      <div class="prj-header">
+        <div>
+          <div class="section-label">
+            <span class="section-label-num">04</span>
+            Projects
+          </div>
+          <h2 class="prj-heading">
+            Selected<br><em>work &amp;</em><br>case studies.
+          </h2>
+        </div>
+        <div class="prj-filters">
+          <button class="prj-filter-btn active" data-filter="all">All</button>
+          <button class="prj-filter-btn" data-filter="ui-ux">UI/UX</button>
+          <button class="prj-filter-btn" data-filter="frontend">Frontend</button>
+          <button class="prj-filter-btn" data-filter="branding">Branding</button>
+        </div>
+      </div>
+
+      <div class="prj-grid" id="prjGrid"></div>
+
+      <div class="prj-load-wrap" id="prjLoadWrap">
+        <div class="prj-progress">
+          <div class="prj-progress-fill" id="prjProgressFill"></div>
+        </div>
+        <div class="prj-load-count" id="prjCount"></div>
+        <button class="prj-load-btn" id="prjLoadBtn">
+          <span class="spin"></span>
+          <span class="btn-txt">Load more projects</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ TESTIMONIAL SECTION ══ -->
+  <section id="testimonials" class="tsm-root">
+    <div class="tsm-inner">
+
+      <div class="tsm-header">
+        <div>
+          <div class="section-label">
+            <span class="section-label-num">05</span>
+            Testimonials
+          </div>
+          <h2 class="tsm-heading">
+            What clients<br><em>say about</em><br>my work.
+          </h2>
+        </div>
+        <div class="tsm-nav">
+          <button class="tsm-nav-btn" id="tsmPrev">&#8592;</button>
+          <button class="tsm-nav-btn" id="tsmNext">&#8594;</button>
+        </div>
+      </div>
+
+      <div class="tsm-track-wrap">
+        <div class="tsm-track" id="tsmTrack"></div>
+      </div>
+
+      <div class="tsm-indicators" id="tsmDots"></div>
+
+      <div class="tsm-summary">
+        <div class="tsm-summary-item">
+          <div class="tsm-summary-num">4.9<span>/5</span></div>
+          <div class="tsm-summary-label">Average Rating</div>
+          <div class="tsm-summary-sub">across all projects</div>
+        </div>
+        <div class="tsm-summary-item">
+          <div class="tsm-summary-num">24<span>+</span></div>
+          <div class="tsm-summary-label">Happy Clients</div>
+          <div class="tsm-summary-sub">worldwide</div>
+        </div>
+        <div class="tsm-summary-item">
+          <div class="tsm-summary-num">100<span>%</span></div>
+          <div class="tsm-summary-label">Satisfaction Rate</div>
+          <div class="tsm-summary-sub">repeat hire rate 80%</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ FAQ SECTION ══ -->
+  <section id="faq" class="faq-root">
+    <div class="faq-inner">
+
+      <div class="faq-left">
+        <div class="section-label">
+          <span class="section-label-num">06</span>
+          FAQ
+        </div>
+        <h2 class="faq-heading">
+          Frequently<br><em>asked</em><br>questions.
+        </h2>
+        <p class="faq-left-desc">
+          Kumpulan pertanyaan yang sering ditanyakan sebelum memulai
+          kolaborasi. Tidak menemukan jawaban yang kamu cari?
+        </p>
+        <div class="faq-contact-box">
+          <div class="faq-contact-label">Masih ada pertanyaan?</div>
+          <p class="faq-contact-text">
+            Jangan ragu untuk menghubungi saya langsung &mdash;
+            saya akan merespons dalam 1x24 jam.
+          </p>
+          <button class="faq-contact-btn">Hubungi Saya &rarr;</button>
+        </div>
+      </div>
+
+      <div class="faq-list" id="faqList"></div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ CONTACT SECTION ══ -->
+  <section id="contact" class="ct-root">
+    <div class="ct-inner">
+
+      <!-- LEFT -->
+      <div class="ct-left">
+        <div>
+          <div class="section-label">
+            <span class="section-label-num">07</span>
+            Contact
+          </div>
+          <h2 class="ct-heading">
+            Let's build<br><em>something</em><br>great.
+          </h2>
+        </div>
+
+        <p class="ct-desc">
+          Punya project menarik atau sekadar ingin berdiskusi?
+          Saya selalu terbuka untuk kolaborasi baru &mdash; baik skala kecil
+          maupun besar. Jangan ragu untuk menghubungi saya.
+        </p>
+
+        <div class="ct-avail">
+          <div class="ct-avail-dot"></div>
+          <span class="ct-avail-text">Currently available for new projects</span>
+        </div>
+
+        <div class="ct-details">
+          <a class="ct-detail-item" href="/cdn-cgi/l/email-protection#89e8ebede8e5c9ece4e8e0e5a7eae6e4">
+            <div class="ct-detail-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div class="ct-detail-body">
+              <div class="ct-detail-label">Email</div>
+              <div class="ct-detail-value"><span class="__cf_email__"
+                  data-cfemail="31505355505d71545c50585d1f525e5c">[email&#160;protected]</span></div>
+            </div>
+            <span class="ct-detail-arrow">&#8599;</span>
+          </a>
+          <a class="ct-detail-item" href="https://wa.me/6281234567890" target="_blank">
+            <div class="ct-detail-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </div>
+            <div class="ct-detail-body">
+              <div class="ct-detail-label">WhatsApp</div>
+              <div class="ct-detail-value">+62 812-3456-7890</div>
+            </div>
+            <span class="ct-detail-arrow">&#8599;</span>
+          </a>
+          <a class="ct-detail-item" href="#" target="_blank">
+            <div class="ct-detail-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div class="ct-detail-body">
+              <div class="ct-detail-label">Location</div>
+              <div class="ct-detail-value">Banda Aceh, Indonesia</div>
+            </div>
+            <span class="ct-detail-arrow">&#8599;</span>
+          </a>
+        </div>
+
+        <div>
+          <div class="ct-social-label">Follow me</div>
+          <div class="ct-social-row">
+            <a href="#" class="ct-social-btn" title="GitHub">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </a>
+            <a href="#" class="ct-social-btn" title="LinkedIn">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z" />
+              </svg>
+            </a>
+            <a href="#" class="ct-social-btn" title="Dribbble">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm7.97 5.54a10.17 10.17 0 0 1 2.3 6.35c-.33-.07-3.67-.75-7.03-.32-.08-.17-.14-.35-.22-.52-.2-.48-.43-.96-.66-1.43 3.72-1.52 5.41-3.7 5.61-4.08zM12 1.84c2.56 0 4.9.94 6.69 2.49-.17.35-1.7 2.38-5.28 3.73C11.77 5.19 10.1 3.1 9.83 2.76A10.2 10.2 0 0 1 12 1.84z" />
+              </svg>
+            </a>
+            <a href="#" class="ct-social-btn" title="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — form -->
+      <div class="ct-form-wrap">
+        <div class="ct-form-title">Kirim Pesan</div>
+        <div class="ct-form-sub">Isi form di bawah dan saya akan menghubungi kamu secepatnya.</div>
+
+        <form class="ct-form" id="ctForm" novalidate>
+          <div class="ct-row">
+            <div class="ct-field" id="fieldName">
+              <label class="ct-label" for="ctName">Nama<span class="ct-required">*</span></label>
+              <input class="ct-input" id="ctName" type="text" placeholder="Nama lengkap kamu" autocomplete="name" />
+              <span class="ct-error-msg">Nama wajib diisi</span>
+            </div>
+            <div class="ct-field" id="fieldEmail">
+              <label class="ct-label" for="ctEmail">Email<span class="ct-required">*</span></label>
+              <input class="ct-input" id="ctEmail" type="email" placeholder="email@kamu.com" autocomplete="email" />
+              <span class="ct-error-msg">Email tidak valid</span>
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-field">
+              <label class="ct-label" for="ctService">Layanan</label>
+              <select class="ct-select" id="ctService">
+                <option value="" disabled selected>Pilih layanan</option>
+                <option value="ui-ux">UI / UX Design</option>
+                <option value="frontend">Frontend Development</option>
+                <option value="branding">Branding &amp; Identity</option>
+                <option value="other">Lainnya</option>
+              </select>
+            </div>
+            <div class="ct-field">
+              <label class="ct-label" for="ctBudget">Budget</label>
+              <select class="ct-select" id="ctBudget">
+                <option value="" disabled selected>Kisaran budget</option>
+                <option value="1-3">&lt; Rp 3 Juta</option>
+                <option value="3-10">Rp 3 &ndash; 10 Juta</option>
+                <option value="10-25">Rp 10 &ndash; 25 Juta</option>
+                <option value="25+">&gt; Rp 25 Juta</option>
+              </select>
+            </div>
+          </div>
+          <div class="ct-field" id="fieldSubject">
+            <label class="ct-label" for="ctSubject">Subjek<span class="ct-required">*</span></label>
+            <input class="ct-input" id="ctSubject" type="text" placeholder="Topik yang ingin dibahas" />
+            <span class="ct-error-msg">Subjek wajib diisi</span>
+          </div>
+          <div class="ct-field" id="fieldMsg">
+            <label class="ct-label" for="ctMsg">Pesan<span class="ct-required">*</span></label>
+            <textarea class="ct-textarea" id="ctMsg" placeholder="Ceritakan project atau pertanyaan kamu..."></textarea>
+            <span class="ct-error-msg">Pesan wajib diisi</span>
+          </div>
+          <div class="ct-submit-row">
+            <p class="ct-submit-note">Dengan mengirim form ini kamu menyetujui<br>untuk dihubungi melalui email atau
+              WhatsApp.</p>
+            <button type="submit" class="ct-submit-btn" id="ctSubmitBtn">
+              <span class="ct-spin"></span>
+              <span class="ct-btn-txt">Kirim Pesan</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="ct-success" id="ctSuccess">
+          <div class="ct-success-icon">
+            <svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <div class="ct-success-title">Pesan terkirim!</div>
+          <p class="ct-success-sub">Terima kasih sudah menghubungi saya.<br>Saya akan membalas dalam 1&times;24 jam.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ CTA SECTION ══ -->
+  <section id="cta" class="cta-root">
+
+    <!-- Marquee strip -->
+    <div class="cta-marquee-wrap" aria-hidden="true">
+      <div class="cta-marquee-track">
+        <!-- set A -->
+        <span class="cta-marquee-item">Available for Projects <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">UI / UX Design <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">Frontend Development <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">Branding &amp; Identity <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">Let's Collaborate <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">Based in Aceh, Indonesia <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">Open for Remote Work <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">5+ Years Experience <span class="cta-marquee-dot"></span></span>
+        <!-- set B (duplicate for seamless loop) -->
+        <span class="cta-marquee-item">Available for Projects <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">UI / UX Design <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">Frontend Development <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">Branding &amp; Identity <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">Let's Collaborate <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">Based in Aceh, Indonesia <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">Open for Remote Work <span class="cta-marquee-dot"></span></span>
+        <span class="cta-marquee-item">5+ Years Experience <span class="cta-marquee-dot"></span></span>
+      </div>
+    </div>
+
+    <!-- Ghost number decoration -->
+    <div class="cta-ghost-num" aria-hidden="true">08</div>
+
+    <!-- Main body -->
+    <div class="cta-body">
+
+      <!-- LEFT — headline + CTA -->
+      <div class="cta-left">
+        <div class="cta-eyebrow">Start a project</div>
+
+        <h2 class="cta-heading">
+          Ready to<br>
+          <em>bring your</em><br>
+          idea to life?
+        </h2>
+
+        <p class="cta-desc">
+          Saya siap membantu mewujudkan visi kamu menjadi produk digital
+          yang tidak hanya indah secara visual, tetapi juga berdampak nyata.
+          Mari mulai percakapan &mdash; tanpa komitmen.
+        </p>
+
+        <div class="cta-actions">
+          <button class="cta-btn-primary"
+            onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Mulai Project
+            <svg viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+          <button class="cta-btn-ghost" id="ctaOpenCv">Lihat CV</button>
+        </div>
+      </div>
+
+      <!-- RIGHT — info cards + availability -->
+      <div class="cta-right">
+
+        <!-- Availability banner -->
+        <div class="cta-avail-banner">
+          <div class="cta-avail-left">
+            <div class="cta-avail-dot"></div>
+            <div class="cta-avail-text">
+              <strong>Abdal Rabbani</strong> — Tersedia untuk proyek baru
+            </div>
+          </div>
+          <div class="cta-avail-tag">2025</div>
+        </div>
+
+        <!-- Cards grid -->
+        <div class="cta-cards-row">
+          <div class="cta-card">
+            <div class="cta-card-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                <polyline points="13 2 13 9 20 9" />
+              </svg>
+            </div>
+            <div class="cta-card-title">Respon Cepat</div>
+            <div class="cta-card-desc">Saya membalas setiap pesan dalam 1×24 jam di hari kerja.</div>
+          </div>
+          <div class="cta-card">
+            <div class="cta-card-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div class="cta-card-title">On-Time Delivery</div>
+            <div class="cta-card-desc">Tepat waktu dan transparan di setiap tahap pengerjaan proyek.</div>
+          </div>
+          <div class="cta-card">
+            <div class="cta-card-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div class="cta-card-title">Client-Focused</div>
+            <div class="cta-card-desc">Pendekatan kolaboratif yang mengutamakan kebutuhan dan tujuan kamu.</div>
+          </div>
+          <div class="cta-card">
+            <div class="cta-card-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <div class="cta-card-title">Quality Assured</div>
+            <div class="cta-card-desc">Setiap deliverable melewati review ketat sebelum diserahkan.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom strip -->
+    <div class="cta-bottom-strip">
+      <div class="cta-strip-left">
+        <div class="cta-strip-stat">
+          <div class="cta-strip-num">48<span>+</span></div>
+          <div class="cta-strip-label">Projects Completed</div>
+        </div>
+        <div class="cta-strip-divider"></div>
+        <div class="cta-strip-stat">
+          <div class="cta-strip-num">24<span>+</span></div>
+          <div class="cta-strip-label">Happy Clients</div>
+        </div>
+        <div class="cta-strip-divider"></div>
+        <div class="cta-strip-stat">
+          <div class="cta-strip-num">5<span>yr</span></div>
+          <div class="cta-strip-label">Experience</div>
+        </div>
+      </div>
+      <div class="cta-strip-right">
+        abdal.design &nbsp;·&nbsp; Aceh, Indonesia &nbsp;·&nbsp; © 2025
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="ft-root" id="footer">
+
+    <!-- 4-column main grid -->
+    <div class="ft-main">
+
+      <!-- ── COL 1 — BRAND ── -->
+      <div class="ft-brand">
+
+        <!-- Logo -->
+        <a href="#hero" class="ft-logo">
+          Abdal<span class="ft-logo-dot">.</span>
+          <span class="ft-logo-badge">Portfolio</span>
+        </a>
+
+        <!-- Tagline -->
+        <p class="ft-tagline">
+          UI/UX Designer &amp; Frontend Developer berbasis di Aceh, Indonesia.
+          Merancang pengalaman digital yang fungsional dan estetis — satu piksel pada satu waktu.
+        </p>
+
+        <!-- Availability -->
+        <div class="ft-avail">
+          <div class="ft-avail-dot"></div>
+          Open for new projects
+        </div>
+
+        <!-- Social icons -->
+        <div class="ft-social-row">
+          <a href="#" class="ft-social-btn" title="GitHub" aria-label="GitHub">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+          </a>
+          <a href="#" class="ft-social-btn" title="LinkedIn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z" />
+            </svg>
+          </a>
+          <a href="#" class="ft-social-btn" title="Dribbble" aria-label="Dribbble">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm7.97 5.54a10.17 10.17 0 0 1 2.3 6.35c-.33-.07-3.67-.75-7.03-.32-.08-.17-.14-.35-.22-.52-.2-.48-.43-.96-.66-1.43 3.72-1.52 5.41-3.7 5.61-4.08zM12 1.84c2.56 0 4.9.94 6.69 2.49-.17.35-1.7 2.38-5.28 3.73C11.77 5.19 10.1 3.1 9.83 2.76A10.2 10.2 0 0 1 12 1.84zM7.75 3.46c.26.32 1.97 2.42 3.6 5.32C6.9 9.94 3.2 9.92 2.82 9.91a10.23 10.23 0 0 1 4.93-6.45zM1.84 12.01v-.26c.37.01 4.7.06 9.47-1.31.26.51.51 1.03.74 1.55l-.37.1c-4.93 1.6-7.54 5.97-7.76 6.34A10.17 10.17 0 0 1 1.84 12zm10.16 10.16c-2.36 0-4.53-.81-6.24-2.15.18-.36 2.2-4.27 7.62-6.19l.06-.02c1.37 3.54 1.93 6.51 2.07 7.34a10.2 10.2 0 0 1-3.51.62zm5.31-1.49c-.1-.58-.62-3.4-1.88-6.88 3.16-.5 5.93.32 6.27.42a10.22 10.22 0 0 1-4.39 6.46z" />
+            </svg>
+          </a>
+          <a href="#" class="ft-social-btn" title="Instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+            </svg>
+          </a>
+          <a href="#" class="ft-social-btn" title="Behance" aria-label="Behance">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029L23.726 17zm-5.38-3.413c-.05-1.595-.907-2.446-2.291-2.446-1.385 0-2.373.851-2.537 2.446h4.828zM6.586 18.036C4.098 18.036 2 16.623 2 13.899V5h3v2.5H7V5h3v9.009C10 16.525 8.299 18.036 6.586 18.036zm.028-7.636c.739 0 1.386.45 1.386 1.328 0 .88-.647 1.328-1.386 1.328H5V10.4h1.614zm-.028 5.636c.974 0 1.75-.577 1.75-1.49 0-.914-.776-1.485-1.75-1.485H5v2.975h1.586z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── COL 2 — NAVIGATION ── -->
+      <div class="ft-links">
+        <div class="ft-col-label">Navigation</div>
+        <nav class="ft-link-list" aria-label="Footer navigation">
+          <a href="#hero" class="ft-link">Home</a>
+          <a href="#about" class="ft-link">About</a>
+          <a href="#services" class="ft-link">Services</a>
+          <a href="#projects" class="ft-link">Projects</a>
+          <a href="#testimonials" class="ft-link">Testimonials</a>
+          <a href="#faq" class="ft-link">FAQ</a>
+          <a href="#contact" class="ft-link">Contact</a>
+        </nav>
+      </div>
+
+      <!-- ── COL 3 — SERVICES ── -->
+      <div class="ft-links">
+        <div class="ft-col-label">Services</div>
+        <nav class="ft-link-list" aria-label="Services">
+          <a href="#services" class="ft-link">UI / UX Design</a>
+          <a href="#services" class="ft-link">Frontend Development</a>
+          <a href="#services" class="ft-link">Branding &amp; Identity</a>
+          <a href="#services" class="ft-link">Design System</a>
+          <a href="#services" class="ft-link">Prototyping</a>
+          <a href="#contact" class="ft-link">Konsultasi Gratis ↗</a>
+        </nav>
+      </div>
+
+      <!-- ── COL 4 — VISITOR COUNTER ── -->
+      <div class="ft-counter">
+        <div class="ft-col-label">Visitor Stats</div>
+
+        <!-- Main counter card -->
+        <div class="ft-counter-card">
+          <div class="ft-counter-eyebrow">Total Visitors</div>
+
+          <!-- Big animated number -->
+          <div class="ft-counter-num">
+            <span class="ft-cnt-int" id="ftCounterNum">0</span>
+          </div>
+          <div class="ft-counter-label">All-time page views</div>
+
+          <!-- Sparkline bar chart (last 7 days) -->
+          <div class="ft-bar-chart" id="ftBarChart" aria-hidden="true"></div>
+          <div class="ft-bar-label-row">
+            <span class="ft-bar-label" id="ftBarStart">7d ago</span>
+            <span class="ft-bar-label">Today</span>
+          </div>
+
+          <!-- Live badge -->
+          <div class="ft-live-badge">
+            <div class="ft-live-dot"></div>
+            Live counter
+          </div>
+        </div>
+
+        <!-- Today / Unique split -->
+        <div class="ft-counter-meta">
+          <div class="ft-counter-meta-item">
+            <div class="ft-counter-meta-num" id="ftTodayNum">0</div>
+            <div class="ft-counter-meta-label">Today</div>
+          </div>
+          <div class="ft-counter-meta-item">
+            <div class="ft-counter-meta-num" id="ftUniqueNum">0</div>
+            <div class="ft-counter-meta-label">Unique</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- /.ft-main -->
+
+    <!-- ── BOTTOM BAR ── -->
+    <div class="ft-bottom">
+      <div class="ft-bottom-left">
+        © 2025 <strong style="color:rgba(240,240,240,0.4)">Abdal Rabbani</strong>.
+        All rights reserved.
+        &nbsp;·&nbsp; Built with HTML, CSS &amp; JavaScript
+        &nbsp;·&nbsp; Designed in <a href="#" title="Figma">Figma</a>
+      </div>
+      <div class="ft-bottom-right">
+        <span style="font-size:0.62rem;letter-spacing:0.08em;color:rgba(240,240,240,0.18)">
+          Banda Aceh, Indonesia &nbsp; 5.5477° N, 95.3239° E
+        </span>
+        <button class="ft-back-top" id="ftBackTop" aria-label="Back to top">
+          <svg viewBox="0 0 24 24">
+            <polyline points="18 15 12 9 6 15" />
+          </svg>
+          Top
+        </button>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Costum JS -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="assets/js/page-transition.js" defer></script>
+  <script src="assets/js/navbar.js" defer></script>
+  <script src="assets/js/hero-skill-bars.js" defer></script>
+  <script src="assets/js/about-skill-bars.js" defer></script>
+  <script src="assets/js/cv-modal.js" defer></script>
+  <script src="assets/js/projects.js" defer></script>
+  <script src="assets/js/testimonials.js" defer></script>
+  <script src="assets/js/faq.js" defer></script>
+  <script src="assets/js/cta.js" defer></script>
+  <script src="assets/js/contact.js" defer></script>
+  <script src="assets/js/lightbox.js" defer></script>
+  <script src="assets/js/visitor-counter.js" defer></script>
+  <script src="assets/js/back-to-top.js" defer></script>
+  <script src="assets/js/cursor.js" defer></script>
+  <script src="assets/js/contact-form.js" defer></script>
+
+  <!-- ══ CV DOWNLOAD MODAL ══ -->
+  <div class="cv-modal-backdrop" id="cvModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+    <div class="cv-modal" id="cvModal">
+      <div class="cv-modal-header">
+        <div class="cv-modal-title-wrap">
+          <div class="cv-modal-eyebrow">Document</div>
+          <div class="cv-modal-title" id="cvModalTitle">Download CV</div>
+        </div>
+        <button class="cv-modal-close" id="cvModalClose" aria-label="Tutup">&#x2715;</button>
+      </div>
+
+      <div class="cv-modal-body">
+        <div class="cv-file-card">
+          <div class="cv-file-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z" />
+            </svg>
+          </div>
+          <div class="cv-file-info">
+            <div class="cv-file-name">abdal-cv.pdf</div>
+            <div class="cv-file-meta">Format PDF &nbsp;&middot;&nbsp; Updated 2025</div>
+          </div>
+        </div>
+
+        <p class="cv-modal-desc">
+          CV ini berisi portofolio lengkap, pengalaman kerja, keahlian, dan informasi kontak.
+          Klik tombol di bawah untuk mengunduhnya.
+        </p>
+
+        <div class="cv-modal-actions">
+          <a href="cv/abdal-cv.pdf" download="abdal-cv.pdf" class="cv-btn-download" id="cvDownloadBtn">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 16l-5-5 7l5 5 5-5" />
+              <line x1="12" y1="3" x2="12" y2="16" />
+            </svg>
+            Unduh CV
+          </a>
+          <button class="cv-btn-cancel" id="cvCancelBtn">Batal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ LIGHTBOX ══ -->
+  <div class="lb-backdrop" id="lbBackdrop" role="dialog" aria-modal="true" aria-label="Project Detail">
+
+    <!-- Top bar -->
+    <div class="lb-topbar">
+      <div class="lb-topbar-left">
+        <div class="lb-counter" id="lbCounter">01 / 09</div>
+        <div class="lb-topbar-title" id="lbTopTitle">Project Title</div>
+      </div>
+      <div class="lb-topbar-right">
+        <button class="lb-icon-btn" id="lbPrevTop" aria-label="Previous" title="Previous (←)">&#8592;</button>
+        <button class="lb-icon-btn" id="lbNextTop" aria-label="Next" title="Next (→)">&#8594;</button>
+        <button class="lb-icon-btn" id="lbClose" aria-label="Close (Esc)">&#x2715;</button>
+      </div>
+    </div>
+
+    <!-- Main container -->
+    <div class="lb-container">
+
+      <!-- Image pane -->
+      <div class="lb-img-pane">
+        <div class="lb-img-bg" id="lbImgBg"></div>
+        <div class="lb-img-num" id="lbImgNum">01</div>
+
+        <!-- Grid overlay & corners via CSS pseudo -->
+        <div class="lb-corner tl"></div>
+        <div class="lb-corner tr"></div>
+        <div class="lb-corner bl"></div>
+        <div class="lb-corner br"></div>
+
+        <!-- Prev / Next over image -->
+        <div class="lb-img-nav prev">
+          <button class="lb-nav-btn" id="lbPrevImg" aria-label="Previous project">&#8592;</button>
+        </div>
+        <div class="lb-img-nav next">
+          <button class="lb-nav-btn" id="lbNextImg" aria-label="Next project">&#8594;</button>
+        </div>
+      </div>
+
+      <!-- Info pane -->
+      <div class="lb-info-pane">
+
+        <!-- Header -->
+        <div class="lb-info-header">
+          <div class="lb-cat-row">
+            <div class="lb-cat" id="lbCat">UI / UX</div>
+            <div class="lb-year" id="lbYear">2024</div>
+          </div>
+          <div class="lb-title" id="lbTitle">Project Title</div>
+        </div>
+
+        <!-- Body -->
+        <div class="lb-info-body">
+
+          <!-- Description -->
+          <div>
+            <div class="lb-section-title">Overview</div>
+            <p class="lb-desc" id="lbDesc">Project description goes here.</p>
+          </div>
+
+          <!-- Tags -->
+          <div>
+            <div class="lb-section-title">Tools &amp; Stack</div>
+            <div class="lb-tags" id="lbTags"></div>
+          </div>
+
+          <!-- Meta grid -->
+          <div>
+            <div class="lb-section-title">Project Details</div>
+            <div class="lb-meta-grid">
+              <div class="lb-meta-item">
+                <div class="lb-meta-label">Category</div>
+                <div class="lb-meta-value" id="lbMetaCat">—</div>
+              </div>
+              <div class="lb-meta-item">
+                <div class="lb-meta-label">Year</div>
+                <div class="lb-meta-value" id="lbMetaYear">—</div>
+              </div>
+              <div class="lb-meta-item">
+                <div class="lb-meta-label">Client</div>
+                <div class="lb-meta-value" id="lbMetaClient">—</div>
+              </div>
+              <div class="lb-meta-item">
+                <div class="lb-meta-label">Status</div>
+                <div class="lb-meta-value" style="color:#4ade80;">Completed</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="lb-info-footer">
+          <button class="lb-btn-primary">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+            View Live
+          </button>
+          <button class="lb-btn-secondary" id="lbCloseBtn2">Close</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "abdal/portfolio-contact",
+  "description": "Contact form backend for portfolio",
+  "require": {
+    "phpmailer/phpmailer": "^6.9"
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}
